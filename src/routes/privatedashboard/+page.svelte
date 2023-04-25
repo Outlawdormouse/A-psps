@@ -10,7 +10,7 @@
 	let currID;
 	let accounts = []; // json con tutti gli account per inserirli nelle cards
 	let scrollX = 0; // posizione orizzontale dello scorrimento
-	let loading = false
+	let loading = false;
 	let currentUser = [];
 
 	
@@ -70,6 +70,10 @@
 			duration: 350,
 		}
 	}
+
+	function privatePage(){
+		window.location.href = '/privatePage';
+	}
 </script>
 
 <svelte:window bind:scrollX />
@@ -80,7 +84,7 @@
 			<nav class = "navbar">
 				<ul>
 					<li><img src = "logo.png" alt="logo" class="logo"/></li>
-					<li><a href="inserimento.php">Account</a></li>
+					<button on:click={privatePage}>account</button>
 					<button on:click={authHandlers.logout}>Logout</button>
 				</ul>
 			</nav>
@@ -107,78 +111,48 @@
 
 <style>
 	
-div {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+	.container {
+        width: 100%;
+        height: 100%;
+    }
 
-h1 {
-    text-align: center;
-}
+    .navbar {
+        display: flex;
+        height: 50px;
+        background-color: #f8f9fa;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
 
-.container {
-    width: 100%;
-    height: 100%;
-}
+    .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
-.navbar {
-    display: flex;
-    height: 50px;
-    background-color: #cccccc;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-	z-index: 1;
-	
-}
+    .navbar li:first-child {
+        margin-right: auto;
+    }
 
-.navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between; /* aggiunta */
-    align-items: center;
-}
+    .navbar li:last-child {
+        margin-left: auto;
+    }
 
-.navbar ul li:first-child {
-    margin-right: auto; /* aggiunta */
-}
-
-.navbar ul li:last-child {
-    margin-left: auto; /* aggiunta */
-}
-
-.logo {
-    width: 65px;
-    height: auto;
-    margin-left: 10px;
-
-}
-
-nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-    display: flex; 
-    align-items: center; 
-}
-
-nav li {
-	display: inline-block;
-	margin-left: 20px; 
-}
-
-nav a {
-	color: #333;
-	text-decoration: none;
-}
-
-nav button {
+    .logo {
+        width: 65px;
+        height: auto;
+        margin-right: 10px;
+    }
+	nav button {
 	color: #333;
 	text-decoration: none;
 	background-color: transparent;
