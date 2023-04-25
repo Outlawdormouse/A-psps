@@ -4,7 +4,7 @@
 	let action = '';
 	let newEmail = '';
 	let newPass = '';
-
+	// pagina che implementa update email e update password
 	async function handleSubmit() {
 		if (!action) {
 			return;

@@ -6,6 +6,7 @@
 	let email;
 	let accounts = []; // array di oggetti con proprietà image e details
 	let scrollX = 0; // posizione orizzontale dello scorrimento
+	
 	authStore.subscribe((curr) => {
 		console.log('CURR', curr);
 		email = curr?.currentUser?.email;
@@ -19,7 +20,7 @@
 		<div class="navbar">
 			<nav>
 				<ul>
-					<li><img src="logo.png" alt="logo" class="logo" /></li>
+					<li><img src = "logo.png" alt="logo" class="logo"/></li>
 					<li><a href="prenotazioni.php">Prenotazioni</a></li>
 					<li><a href="inserimento.php">Account</a></li>
 					<button on:click={authHandlers.logout}>Logout</button>
@@ -63,7 +64,7 @@ h1 {
 }
 
 .logo {
-    width: 100px;
+    width: 65px;
     height: auto;
     margin-left: 10px;
 }
@@ -73,26 +74,26 @@ nav ul {
 	margin: 0;
 	padding: 0;
     display: flex;
-    justify-content: space-between; /* aggiunto per distribuire gli elementi */
-    align-items: center; /* aggiunto per centrare gli elementi */
+    justify-content: space-between; 
+    align-items: center; 
 }
 
 nav li {
 	display: inline-block;
-	margin-left: 20px; /* modificato per avere solo il margine a sinistra */
+	margin-left: 20px; 
 }
 
 nav a {
-	color: #333; /* modificato per avere un colore più scuro */
+	color: #333;
 	text-decoration: none;
 }
 
 nav button {
-	color: #333; /* modificato per avere un colore più scuro */
+	color: #333;
 	text-decoration: none;
-	background-color: transparent; /* aggiunto per rimuovere lo sfondo */
-	border: none; /* aggiunto per rimuovere il bordo */
-	cursor: pointer; /* aggiunto per avere l'effetto del puntatore */
-	margin-left: 15px; /* aggiunto per avere un margine a destra */
+	background-color: transparent;
+	border: none; 
+	cursor: pointer;
+	margin-left: 15px; 
 }
 </style>

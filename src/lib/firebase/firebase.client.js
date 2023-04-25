@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { deleteApp, getApp, getApps, initializeApp } from "firebase/app";
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { getAuth, setPersistence, inMemoryPersistence } from 'firebase/auth'
+import { getAuth } from 'firebase/auth'
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     'apiKey': "AIzaSyC9eRBOd0FzSfhmExVqOmo4FlVCVobmI0U",
     'authDomain': "a-psps.firebaseapp.com",
@@ -12,10 +9,10 @@ const firebaseConfig = {
     'messagingSenderId': "410022355160",
     'appId': "1:410022355160:web:a4e1bddaad4b4da39537ad",
     'measurementId': "G-878LL4DRCC",
-    'databaseURL': ""
+    'databaseURL': "https://a-psps-default-rtdb.firebaseio.com/"
 };
 
-// Initialize Firebase
+// inizializzazione Firebase
 let firebaseApp;
 if (!getApps().length) {
     firebaseApp = initializeApp(firebaseConfig)
