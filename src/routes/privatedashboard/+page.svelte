@@ -74,6 +74,7 @@
 	function privatePage(){
 		window.location.href = '/privatePage';
 	}
+
 </script>
 
 <svelte:window bind:scrollX />
@@ -90,7 +91,6 @@
 			</nav>
 		</div>
 		<Slidy {...slidy_cards} let:item >
-			
 			<div class="slide">
 				<img alt="{item.name}" src="{item.src}"/>
 				<article>
@@ -101,6 +101,7 @@
 					<p>
 						{item.animalDescription}
 					</p>
+					<button on:click={()=>{window.location.href = '/anotherAccountPage/' + item.id}} class="changePage">visualizza</button>
 				</article>
 			</div>
 		</Slidy>
@@ -110,6 +111,20 @@
 {/if}
 
 <style>
+
+	.changePage{ 
+			background-color: #ff0000; 
+			color: white; 
+			padding: 10px 20px; 
+			border-radius: 5px; 
+			border: none;
+			cursor: pointer; 
+			margin-top: 20px; 
+		} 
+	
+	.changePage:hover { 
+			background-color: rgb(218, 3, 3); 
+		} 
 	
 	.container {
         width: 100%;

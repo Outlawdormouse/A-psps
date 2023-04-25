@@ -1,5 +1,6 @@
 <script>
-    import { authHandlers, authStore } from '../../stores/authStore';
+    import { page } from '$app/stores';
+    import { authHandlers, authStore } from '../../../stores/authStore';
 	import { getDatabase, onValue, ref } from 'firebase/database';
 
     const db = getDatabase();
@@ -10,7 +11,7 @@
 
     authStore.subscribe((curr) => {
 		console.log('CURR', curr);
-		currID = curr?.currentUser?.uid;
+		currID = $page.params.slug;
 	});
 
     onValue(usersRef, (snapshot) => {
@@ -38,14 +39,14 @@
         <div>
             <nav class = "navbar">
                 <ul>
-                    <li><img src = "logo.png" alt="logo" class="logo"/></li>
+                    <li><img src = "../logo.png" alt="logo" class="logo"/></li>
                     <button on:click={home}>home</button>
                     <button on:click={authHandlers.logout}>Logout</button>
                 </ul>
             </nav>
         </div>
         <div class="user-data">
-            <h1>Welcome, {currentUser[0].name}!</h1>
+            <h1>Hi i'm {currentUser[0].animalName}!</h1>
             <div class="card">
                 <img src="{currentUser[0].src}" alt="{currentUser[0].animalName}" />
                 <div class="card-text">
@@ -54,6 +55,7 @@
                     <p>Description: {currentUser[0].animalDescription}</p>
                     <p>Age: {currentUser[0].animalAge}</p>
                     <p>Gender: {currentUser[0].gender}</p>
+                    <p>Owner: {currentUser[0].name}</p>
                     <p>Email: {currentUser[0].mail}</p>
                 </div>
             </div>
