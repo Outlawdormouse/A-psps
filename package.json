@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"firebase": "^9.17.1"
+		"firebase": "^9.17.1",
+		"svelte-slidy": "^2.8.7"
 	}
 }

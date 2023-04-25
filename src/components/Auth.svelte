@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { getDatabase, ref, set } from 'firebase/database'
 	import { getStorage, ref as refStorage, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-
+	
 	
 	const storage = getStorage();
 
@@ -24,15 +24,19 @@
 	onMount(async () => {
 		await sleep(500);
 		console.log("questo è onmount", $authStore.currentUser);
+		pageChange();
+	});
+
+	function sleep(ms) {
+    	return new Promise((resolve) => setTimeout(resolve, ms ?? 200));
+  	}
+
+	function pageChange() {
 		if ($authStore.currentUser) {
 			window.location.href = '/privatedashboard';
 			
 		}
-	});
-
-	function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms ?? 200));
-  }
+	}
 
 	async function controllo() {
 		console.log("questo è onmount", $authStore.currentUser);
@@ -44,15 +48,12 @@
 		if (!email || !password || (register && !confirmPassword || register && !animalRace || register && !animalName || register && !animalAge || register && !animalGender || register && !animalDescribtion || register && !animalImage || register && !nickname)) {
 			return;
 		}
-		console.log('register', register);
-		console.log(password, confirmPassword);
 		// controllo se la password è uguale alla conferma password per la registrazione
 		if (register && password === confirmPassword) {
 			try {
 				await authHandlers.signup(email, password);
 				// se la registrazione va a buon fine carico l'immagine sullo storage e prendo l'url
 				await tryToUploadImage();
-				console.log("provo")
 			} catch (err) {
 				console.log(err);
 			}
@@ -61,14 +62,10 @@
 			console.log('login')
 			try {
 				await authHandlers.login(email, password);
+				pageChange();
 			} catch (err) {
 				console.log(err);
 			}
-		}
-		// indirizza alla pagina privata se l'utente è loggato
-		if ($authStore.currentUser) {
-			window.location.href = '/privatedashboard';
-			
 		}
 	}
 	// funzione per registrare l'utente
@@ -84,7 +81,6 @@
 			animal_describtion: aDescribtion,
 			animal_image: imageUrl
 		});
-		console.log("fattooooooooooooooooo");
 }
 
 async function uploadImageToStorage(path, imageName) {
@@ -125,6 +121,7 @@ async function uploadImageToStorage(path, imageName) {
 				urlImage = downloadURL;
 				// scrivo i dati dell'utente nel database
 				writeUserData($authStore.currentUser.uid, nickname, email, animalRace, animalName, animalAge, animalGender, animalDescribtion, urlImage);
+				register = !register;
 			});
 		}
 	);
