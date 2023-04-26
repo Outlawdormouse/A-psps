@@ -214,7 +214,7 @@ async function tryToUploadImage() {
 		</div>
 	{/if}
 </div>
-<button on:click={controllo}>controll</button>
+<!-- <button on:click={controllo}>controll</button> -->
 
 <style> 
 	.container { 

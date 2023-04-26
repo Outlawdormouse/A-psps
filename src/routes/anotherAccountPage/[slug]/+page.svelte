@@ -40,7 +40,7 @@
             <nav class = "navbar">
                 <ul>
                     <li><img src = "../logo.png" alt="logo" class="logo"/></li>
-                    <button on:click={home}>home</button>
+                    <button on:click={home}>Home</button>
                     <button on:click={authHandlers.logout}>Logout</button>
                 </ul>
             </nav>

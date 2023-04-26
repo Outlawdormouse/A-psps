@@ -85,7 +85,7 @@
 			<nav class = "navbar">
 				<ul>
 					<li><img src = "logo.png" alt="logo" class="logo"/></li>
-					<button on:click={privatePage}>account</button>
+					<button on:click={privatePage}>Account</button>
 					<button on:click={authHandlers.logout}>Logout</button>
 				</ul>
 			</nav>
